@@ -40,11 +40,13 @@ function draw() {
     line(0, 0, x, y);
   }
 
+  /*
   fill('#ffffff');
   textSize(48);
   textAlign(CENTER);
   textStyle(BOLD);
   text("tom", 32,32);
+  */
 }
 
 function windowResized() {
