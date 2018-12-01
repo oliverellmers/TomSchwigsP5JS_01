@@ -19,6 +19,7 @@ function setup() {
 
   strokeCap(SQUARE);
   noFill();
+  noCursor();
 } 
 
 function draw() {
