@@ -1,52 +1,38 @@
-var canvas;
+var message = "TOM SCHWAIGER";
+var font,
+  bounds, // holds x, y, w, h of the text's bounding box
+  fontsize = 128,
+  x, y; // x and y coordinates of the text
+
 var w;
 var h;
 
-var font;
-var fontsize = 128;
-var bounds;
-var message = "TOM\nSCHWAIGER";
-var tx, ty; // x and y coordinates of the text
-
 function preload() {
   font = loadFont('assets/Nadir-Light.otf');
-  
 }
 
 function setup() {
-  /*
-  canvas = createCanvas(windowWidth, windowHeight, P2D);
-  pixelDensity(1);
-  canvas.position(0,0);
-  canvas.style('z-index', '-1');
+  createCanvas(windowWidth, windowHeight);
 
-  canvas.parent("parent_canvas");
-  */
-  createCanvas(windowWidth, windowHeight, P2D);
-  pixelDensity(1);
-  //position(0,0);
-  //style('z-index', '-1');
+  // set up the font
+  textFont(font);
+  textSize(fontsize);
+
+  // get the width and height of the text so we can center it initially
+  bounds = font.textBounds(message, 0, 0, fontsize);
+  x = width / 2 - bounds.w / 2;
+  y = height / 2 - bounds.h / 2;
 
 
   strokeCap(SQUARE);
   noFill();
-
-  textFont(font);
-  textSize(fontsize);
-
-  bounds = font.textBounds(message, 0, 0, fontsize);
-  tx = windowWidth / 2 - bounds.w / 2;
-  ty = windowHeight / 2 - bounds.h / 2;
-  
-
-} 
+}
 
 function draw() {
-  
   w = windowWidth;
   h = windowHeight;
 
-  
+
   background(255);
 
   push();
@@ -64,29 +50,21 @@ function draw() {
   }
   pop();
 
-  
-  push();
+  // write the text in black and get its bounding box
+  fill(255);
   textAlign(CENTER, CENTER);
-  fill(0,0,0);
-  stroke(0,0,0);
-  text(message, windowWidth/2, windowHeight/2);
-  bounds = font.textBounds(message,windowWidth/2, windowHeight/2,fontsize);
-  pop();
-  blendMode(NORMAL);
+  text("TOM\nSCHWAIGER", windowWidth/2, windowHeight/2);
+  bounds = font.textBounds(message,windowWidth/2,windowHeight/2 + 50,fontsize);
 
+  
+
+  
+
+  // check if the mouse is inside the bounding box and tickle if so
   if ( mouseX >= bounds.x && mouseX <= bounds.x + bounds.w &&
     mouseY >= bounds.y && mouseY <= bounds.y + bounds.h) {
     filter(INVERT);
   }
-
-
-
-
-
-  //filter(INVERT);
-  
-  
-
 }
 
 function windowResized() {
