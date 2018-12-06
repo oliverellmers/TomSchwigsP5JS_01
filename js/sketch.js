@@ -1,3 +1,5 @@
+
+
 var canvas;
 var w;
 var h;
@@ -14,6 +16,7 @@ function preload() {
 }
 
 function setup() {
+  noCursor();
   /*
   canvas = createCanvas(windowWidth, windowHeight, P2D);
   pixelDensity(1);
@@ -78,6 +81,17 @@ function draw() {
     mouseY >= bounds.y && mouseY <= bounds.y + bounds.h) {
     filter(INVERT);
   }
+
+  blendMode(DIFFERENCE);
+  if(isOverSketch ){
+    fill(255,255,255, 255);
+  }else{
+    fill(255,255,255, 0);
+  }
+  
+  ellipse(mouseX, mouseY, 24, 24);
+  
+  blendMode(NORMAL)
 
 
 
