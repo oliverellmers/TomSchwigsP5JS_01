@@ -1,7 +1,7 @@
 var message = "TOM SCHWAIGER";
 var font,
   bounds, 
-  fontsize = 128,
+  fontsize = 148,
   x, y; 
 
 var w;
@@ -35,7 +35,7 @@ function draw() {
   h = windowHeight;
 
 
-  background(255);
+  background(0);
 
   push();
   translate(w / 2, h / 2);
@@ -48,12 +48,13 @@ function draw() {
   for (var i = 0; i <= circleResolution; i++) {
     var x = cos(angle * i) * radius;
     var y = sin(angle * i) * radius;
+    stroke(255);
     line(0, 0, x, y);
   }
   pop();
 
   push();
-  fill(255);
+  fill(0);
   textAlign(CENTER, CENTER);
   text("TOM\nSCHWAIGER", windowWidth/2, windowHeight/2);
   bounds = font.textBounds(message,windowWidth/2,windowHeight/2 + 50,fontsize);
