@@ -60,10 +60,14 @@ function setup() {
   multiCanvas.parent("multiCanvas");
   multiCanvas.mouseOver(overSketch);
   multiCanvas.mouseOut(outSketch);
+  multiCanvas.mouseClicked(mClick);
 
 
   scalar = windowWidth;
 
+}
+function mClick(){
+  window.location.href = 'https://www.tomschwaiger.co/work';
 }
 
 function overSketch() {
@@ -118,7 +122,7 @@ function draw() {
   fill(0);
   textAlign(CENTER, CENTER);
   text("TOM\nSCHWAIGER", windowWidth/2, windowHeight/2);
-  bounds = font.textBounds(message,windowWidth/2,windowHeight/2 + 50,fontsize);
+  bounds = font.textBounds(message,w/2,h/2 + 50,fontsize);
   pop();
 
   
