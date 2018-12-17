@@ -13,8 +13,12 @@ body{
 	display: flex;
 	justify-content: left;
 	overflow: hidden;
-	
+
+	font-family: Nadir;
+  	font-size: 13.5vw;
+  	text-align: center;	
 }
+
 
 
 #multiCanvas{
@@ -22,6 +26,13 @@ body{
 	padding:0;
 	overflow: hidden;
 	position:absolute;
+}
+
+
+@font-face{
+	src:url("assets/Nadir-Light.otf")
+		format("truetype");
+		font-family:Nadir;
 }
 
 

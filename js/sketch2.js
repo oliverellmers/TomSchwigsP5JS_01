@@ -1,21 +1,15 @@
-var message = "TOM SCHWAIGER";
-var font,
-bounds, 
-fontsize = 148,
-x, y; 
+var paragraph; 
 
 var w;
 var h;
 
 var isOverSketch = false;
 var isMobile = false;
+var isOverParagraph = false;
 
 var angle1=0;
 var scalar = 1;
 
-function preload() {
-  font = loadFont('assets/Nadir-Light.otf');
-}
 
 function getMobileOperatingSystem() {
 var userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -31,7 +25,6 @@ var userAgent = navigator.userAgent || navigator.vendor || window.opera;
       return "Android";
   }
 
-  // iOS detection from: http://stackoverflow.com/a/9039885/177710
   if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
       isMobile = true;
       return "iOS";
@@ -45,16 +38,13 @@ function setup() {
   noCursor();
   getMobileOperatingSystem();
   var multiCanvas = createCanvas(windowWidth, windowHeight, P2D);
+  multiCanvas.style('display', 'block');
 
-  textFont(font);
-  textSize(fontsize);
+  paragraph = createP("TOM\nSCHWAIGER")
+  paragraph.mouseOver(overParagraph);
+  paragraph.mouseOut(outParagraph);
 
-  bounds = font.textBounds(message, 0, 0, fontsize);
-  x = width / 2 - bounds.w / 2;
-  y = height / 2 - bounds.h / 2;
-
-
-  strokeCap(SQUARE);
+  multiCanvas.strokeCap(SQUARE);
   noFill();
 
   multiCanvas.parent("multiCanvas");
@@ -66,6 +56,14 @@ function setup() {
   scalar = windowWidth;
 
 }
+function overParagraph(){
+  isOverParagraph = true;
+}
+
+function outParagraph(){
+  isOverParagraph = false;
+}
+
 function mClick(){
   window.location.href = 'https://www.tomschwaiger.co/work';
 }
@@ -88,19 +86,14 @@ function draw() {
   if(isMobile){
 
     var ang1 = radians(angle1);
-
     var mx = -width + (scalar * sin(ang1));
     var my = height/2 + (scalar * cos(ang1));
 
     angle1 += 0.5;
-
-
-   // console.log(mx + " " + my);
-
   }
 
 
-  background(0);
+  background(255);
 
   push();
   translate(w / 2, h / 2);
@@ -113,25 +106,27 @@ function draw() {
   for (var i = 0; i <= circleResolution; i++) {
     var x = cos(angle * i) * radius;
     var y = sin(angle * i) * radius;
-    stroke(255);
+    strokeCap(SQUARE);
+    stroke(0);
     line(0, 0, x, y);
   }
   pop();
 
   push();
   fill(0);
-  textAlign(CENTER, CENTER);
-  text("TOM\nSCHWAIGER", windowWidth/2, windowHeight/2);
-  bounds = font.textBounds(message,w/2,h/2 + 50,fontsize);
+  paragraph.width = windowWidth;
+  paragraph.height = windowHeight;
+  paragraph.position(width/2 - width/2, height/2 - paragraph.height/2);
+  //fill(255, 0, 0, 128);
+  //rect(-paragraph.width/2, -paragraph.height/2, paragraph.width, paragraph.height);
+
   pop();
 
-  
 
 
-  if ( mouseX >= bounds.x && mouseX <= bounds.x + bounds.w &&
-    mouseY >= bounds.y && mouseY <= bounds.y + bounds.h) {
+  if(isOverParagraph){
     filter(INVERT);
-}
+  }
 
 
 blendMode(DIFFERENCE);
@@ -141,7 +136,6 @@ if(isOverSketch && !isMobile){
   fill(255,255,255, 0);
 }
 
-//fill(255,255,255, 255);
 push();
 ellipse(mouseX, mouseY, 24, 24);
 pop();
