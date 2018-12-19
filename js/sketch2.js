@@ -113,10 +113,12 @@ function draw() {
   bounds = font.textBounds(message, x, y, fontSize);
   pop();
 
+/*
   if ( mouseX >= bounds.x && mouseX <= bounds.x + bounds.w &&
     mouseY >= bounds.y - fontSize / 2 && mouseY <= bounds.y + fontSize / 2 + bounds.h) {
     filter(INVERT);
   }
+  */
 
 
 blendMode(DIFFERENCE);
