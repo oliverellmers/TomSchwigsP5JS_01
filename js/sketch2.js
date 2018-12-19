@@ -5,8 +5,6 @@ var bounds;
 var x, y;
 var message = "TOM\nSCHWAIGER";
 
-//var paragraph; 
-
 var w;
 var h;
 
@@ -27,14 +25,6 @@ function setup() {
   getMobileOperatingSystem();
   var multiCanvas = createCanvas(windowWidth, windowHeight, P2D);
   multiCanvas.style('display', 'block');
-
-  //paragraph = createP("TOM\nSCHWAIGER");
-  //paragraph = createP("SOME\nTEXT");
-  //paragraph.class("paragraph_p5");
-
-  //paragraph.position(0,0);
-  //paragraph.mouseOver(overParagraph);
-  //paragraph.mouseOut(outParagraph);
 
   textFont(font);
   textSize(fontSize);
@@ -88,7 +78,6 @@ function draw() {
     var ang1 = radians(angle1);
     var mx = -width + (scalar * sin(ang1));
     var my = height/2 + (scalar * cos(ang1));
-
     angle1 += 0.5;
   }
 
@@ -112,34 +101,16 @@ function draw() {
   }
   pop();
 
-  //push();
-  //fill(0);
-  //paragraph.width = windowWidth;
-  //paragraph.style("color:rgba(0,0,255,255); text-align:center;");
-  //paragraph.height = windowHeight;
-  //paragraph.position(width/2 - width/2, height/2 - paragraph.height);
-  //fill(255, 0, 0, 128);
-  //rect(-paragraph.width/2, -paragraph.height/2, paragraph.width, paragraph.height);
-
-  //pop();
-
 
   push();
   textAlign(CENTER, CENTER);
   fontSize = width/6.5;
-
-  
-
-
-
   textSize(fontSize);
   fill(0);
   text(message, width/2, height/2);
-
   x = width / 2;
   y = height / 2;
   bounds = font.textBounds(message, x, y, fontSize);
-  
   pop();
 
   if ( mouseX >= bounds.x && mouseX <= bounds.x + bounds.w &&
