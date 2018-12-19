@@ -4,6 +4,7 @@ html, body {
 	height: 100%;
 	margin: 0px;
 	overflow: hidden;
+	cursor:none;
 }
 
 body{
@@ -13,28 +14,41 @@ body{
 	display: flex;
 	justify-content: left;
 	overflow: hidden;
-
-	font-family: Nadir;
-  	font-size: 13.5vw;
-  	text-align: center;	
-  	cursor:none;
+	cursor:none;
 }
-
-
 
 #multiCanvas{
 	margin:0;
 	padding:0;
 	overflow: hidden;
 	position:absolute;
+	cursor:none;
 }
 
-
+/*
 @font-face{
 	src:url("assets/Nadir-Light.otf")
 		format("truetype");
 		font-family:Nadir;
 }
+
+.paragraph_p5{
+
+	background-color: red;
+	width:100%;
+	height:13.5vw;
+  	
+	font-size: 13.5vw;
+  	text-align: center;
+  	vertical-align: middle;
+
+	font-family: Nadir;
+  	
+  	color:#000;
+
+}
+*/
+
 
 
 

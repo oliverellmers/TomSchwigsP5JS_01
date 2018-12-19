@@ -1,4 +1,11 @@
-var paragraph; 
+var textObject;
+var font;
+var fontSize = 125;
+var bounds;
+var x, y;
+var message = "TOM\nSCHWAIGER";
+
+//var paragraph; 
 
 var w;
 var h;
@@ -10,29 +17,10 @@ var isOverParagraph = false;
 var angle1=0;
 var scalar = 1;
 
-
-function getMobileOperatingSystem() {
-var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
-    // Windows Phone must come first because its UA also contains "Android"
-  if (/windows phone/i.test(userAgent)) {
-      isMobile = true;
-      return "Windows Phone";
-  }
-
-  if (/android/i.test(userAgent)) {
-      isMobile = true;
-      return "Android";
-  }
-
-  if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-      isMobile = true;
-      return "iOS";
-  }
-
-  isMobile = false;
-  return "unknown";
+function preload(){
+  font = loadFont('assets/Nadir-Light.otf');
 }
+
 
 function setup() {
   noCursor();
@@ -40,9 +28,21 @@ function setup() {
   var multiCanvas = createCanvas(windowWidth, windowHeight, P2D);
   multiCanvas.style('display', 'block');
 
-  paragraph = createP("TOM\nSCHWAIGER")
-  paragraph.mouseOver(overParagraph);
-  paragraph.mouseOut(outParagraph);
+  //paragraph = createP("TOM\nSCHWAIGER");
+  //paragraph = createP("SOME\nTEXT");
+  //paragraph.class("paragraph_p5");
+
+  //paragraph.position(0,0);
+  //paragraph.mouseOver(overParagraph);
+  //paragraph.mouseOut(outParagraph);
+
+  textFont(font);
+  textSize(fontSize);
+
+  bounds = font.textBounds(message, 0, 0, fontSize);
+  x = width / 2 - bounds.w / 2;
+  y = height / 2 - bounds.h / 2;
+
 
   multiCanvas.strokeCap(SQUARE);
   noFill();
@@ -112,19 +112,38 @@ function draw() {
   }
   pop();
 
-  push();
-  fill(0);
-  paragraph.width = windowWidth;
-  paragraph.height = windowHeight;
-  paragraph.position(width/2 - width/2, height/2 - paragraph.height/2);
+  //push();
+  //fill(0);
+  //paragraph.width = windowWidth;
+  //paragraph.style("color:rgba(0,0,255,255); text-align:center;");
+  //paragraph.height = windowHeight;
+  //paragraph.position(width/2 - width/2, height/2 - paragraph.height);
   //fill(255, 0, 0, 128);
   //rect(-paragraph.width/2, -paragraph.height/2, paragraph.width, paragraph.height);
 
+  //pop();
+
+
+  push();
+  textAlign(CENTER, CENTER);
+  fontSize = width/6.5;
+
+  
+
+
+
+  textSize(fontSize);
+  fill(0);
+  text(message, width/2, height/2);
+
+  x = width / 2;
+  y = height / 2;
+  bounds = font.textBounds(message, x, y, fontSize);
+  
   pop();
 
-
-
-  if(isOverParagraph){
+  if ( mouseX >= bounds.x && mouseX <= bounds.x + bounds.w &&
+    mouseY >= bounds.y - fontSize / 2 && mouseY <= bounds.y + fontSize / 2 + bounds.h) {
     filter(INVERT);
   }
 
@@ -148,4 +167,27 @@ function windowResized() {
   multiCanvas = createCanvas(windowWidth, windowHeight, P2D);
   getMobileOperatingSystem();
   scalar = windowWidth;
+}
+
+function getMobileOperatingSystem() {
+var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    // Windows Phone must come first because its UA also contains "Android"
+  if (/windows phone/i.test(userAgent)) {
+      isMobile = true;
+      return "Windows Phone";
+  }
+
+  if (/android/i.test(userAgent)) {
+      isMobile = true;
+      return "Android";
+  }
+
+  if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+      isMobile = true;
+      return "iOS";
+  }
+
+  isMobile = false;
+  return "unknown";
 }
