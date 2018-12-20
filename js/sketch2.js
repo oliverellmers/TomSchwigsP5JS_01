@@ -67,8 +67,28 @@ function outSketch() {
 }
 
 function draw() {
+  background(255);
+
   w = windowWidth;
   h = windowHeight;
+
+  
+
+
+  push();
+  textAlign(CENTER, CENTER);
+  fontSize = width/8.5;
+  textSize(fontSize);
+  textLeading(fontSize);
+  fill(0);
+  
+  x = width / 2;
+  y = height / 2;
+
+  bounds = font.textBounds(message, x, y, fontSize);
+  text(message, x, y - (bounds.h/2));
+  pop();
+
 
   var mx = mouseX;
   var my = mouseY;
@@ -82,10 +102,8 @@ function draw() {
   }
 
 
-  background(255);
-
   push();
-  translate(w / 2, h / 2);
+  translate(w / 2, (h / 2) - ((bounds.h / 2) / 2));
   var circleResolution = map(my, 0, height, 2, 80);
   var radius = mx - width / 2 + 0.5;
   var angle = TAU / circleResolution;
@@ -99,18 +117,6 @@ function draw() {
     stroke(0);
     line(0, 0, x, y);
   }
-  pop();
-
-
-  push();
-  textAlign(CENTER, CENTER);
-  fontSize = width/6.5;
-  textSize(fontSize);
-  fill(0);
-  text(message, width/2, height/2);
-  x = width / 2;
-  y = height / 2;
-  bounds = font.textBounds(message, x, y, fontSize);
   pop();
 
 /*
