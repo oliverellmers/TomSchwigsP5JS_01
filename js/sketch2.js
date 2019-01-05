@@ -137,7 +137,7 @@ if(isOverSketch && !isMobile){
 push();
 ellipse(mouseX, mouseY, 24, 24);
 pop();
-blendMode(NORMAL)
+blendMode(BLEND)
 }
 
 function windowResized() {
