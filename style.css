@@ -1,13 +1,11 @@
-head{
-	
-}
-
 html, body {
 	width:  100%;
 	height: 100%;
 	margin: 0px;
 	overflow: hidden;
 	cursor:none;
+	
+
 }
 
 body{
@@ -18,6 +16,7 @@ body{
 	justify-content: left;
 	overflow: hidden;
 	cursor:none;
+
 }
 
 #multiCanvas{
@@ -26,9 +25,7 @@ body{
 	overflow: hidden;
 	position:absolute;
 	cursor:none;
-	display: -webkit-inline-box;
-    -webkit-box-pack: center;
-    -webkit-box-align: center;
+
 }
 
 /*
