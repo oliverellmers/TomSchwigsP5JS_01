@@ -56,6 +56,8 @@ function outParagraph(){
 
 function mClick(){
   //window.location.href = 'https://www.tomschwaiger.co/work';
+  window.location.href = 'https://www.tomschwaiger.co/work';
+    
 }
 
 function overSketch() {
