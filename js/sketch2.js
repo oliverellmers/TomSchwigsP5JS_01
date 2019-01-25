@@ -102,10 +102,11 @@ function draw() {
   */
   //alt
   paragraph.center();
+
   var pH = paragraph.elt.offsetHeight;
   var pY = paragraph.position().y;
-  //console.log("pY: " + pY);
-  paragraph.position(0, pY-(pH/4));
+
+  paragraph.position(0, pY-(pH/2));
   pop();
 
 
@@ -122,7 +123,8 @@ function draw() {
 
 
   push();
-  translate(w / 2, (h / 2) - ((bounds.h / 2) / 2));
+  translate(w / 2, pY);
+  
   var circleResolution = map(my, 0, height, 2, 80);
   var radius = mx - width / 2 + 0.5;
   var angle = TAU / circleResolution;

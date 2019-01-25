@@ -26,6 +26,7 @@ body{
 	position:absolute;
 	cursor:none;
 
+
 }
 
 @font-face{
@@ -34,9 +35,12 @@ body{
 		font-family:Nadir;
 }
 
+
+
 .pClass{
 	width:100%;
 	margin:0;
+	padding:0;
   	overflow: hidden;
 	font-family: Nadir;
 	font-size: 13.5vw;
