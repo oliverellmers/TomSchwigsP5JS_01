@@ -28,29 +28,20 @@ body{
 
 }
 
-/*
 @font-face{
 	src:url("assets/Nadir-Light.otf")
 		format("truetype");
 		font-family:Nadir;
 }
 
-.paragraph_p5{
-
-	background-color: red;
+.pClass{
 	width:100%;
-	height:13.5vw;
-  	
+	margin:0;
+  	overflow: hidden;
+	font-family: Nadir;
 	font-size: 13.5vw;
   	text-align: center;
-  	vertical-align: middle;
-
-	font-family: Nadir;
-  	
-  	color:#000;
-
 }
-*/
 
 
 

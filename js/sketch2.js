@@ -15,6 +15,9 @@ var isOverParagraph = false;
 var angle1=0;
 var scalar = 1;
 
+//alt
+var paragraph;
+
 function preload(){
   font = loadFont('assets/Nadir-Light.otf');
 }
@@ -28,6 +31,13 @@ function setup() {
 
   textFont(font);
   textSize(fontSize);
+
+  //alt
+  paragraph = createP(message);
+  paragraph.class("pClass");
+  paragraph.position(0,0);
+  paragraph.mouseOver(overParagraph);
+  paragraph.mouseOut(outParagraph);
 
   bounds = font.textBounds(message, 0, 0, fontSize);
   x = width / 2 - bounds.w / 2;
@@ -77,6 +87,7 @@ function draw() {
 
 
   push();
+  /*
   textAlign(CENTER, CENTER);
   fontSize = width/8.5;
   textSize(fontSize);
@@ -88,6 +99,13 @@ function draw() {
 
   bounds = font.textBounds(message, x, y, fontSize);
   text(message, x, y - (bounds.h/2));
+  */
+  //alt
+  paragraph.center();
+  var pH = paragraph.elt.offsetHeight;
+  var pY = paragraph.position().y;
+  //console.log("pY: " + pY);
+  paragraph.position(0, pY-(pH/4));
   pop();
 
 
