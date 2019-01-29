@@ -103,10 +103,15 @@ function draw() {
   //alt
   paragraph.center();
 
-  var pH = paragraph.elt.offsetHeight;
+  //var pH = paragraph.elt.offsetHeight;
+  var pH = paragraph.height;
+  var pY = paragraph.position;
+  //console.log("ph: " + pH);
+  //console.log("pY: " + pY);
+
   
 
-  paragraph.position(0, (h/2)-(pH/2));
+  //paragraph.position(0, (h/2)-(pH/4));
   //paragraph.position(0, pY-(pH/2));
   //var pY = paragraph.position().y;
   pop();
